@@ -1,6 +1,10 @@
 const router = require('express').Router();
+const { checkPayload, checkUsernameExists, checkUsernameFree } = require('../middleware/auth-middleware')
+const { JWT_SECRET } = require('../secrets')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
-router.post('/register', (req, res) => {
+router.post('/register', checkPayload, checkUsernameFree, async (req, res) => {
   res.end('implement register, please!');
   /*
     IMPLEMENT
@@ -29,7 +33,7 @@ router.post('/register', (req, res) => {
   */
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', checkPayload, checkUsernameExists, async (req, res) => {
   res.end('implement login, please!');
   /*
     IMPLEMENT

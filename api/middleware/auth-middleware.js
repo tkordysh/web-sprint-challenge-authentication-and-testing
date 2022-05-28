@@ -27,7 +27,21 @@ const restrict = (req, res, next) => {
   */
 };
 
+const checkPayload = (req, res, next) => {
+  next()
+}
+const checkUsernameFree = (req, res, next) => {
+  next()
+}
+const checkUsernameExists = (req, res, next) => {
+  next()
+}
+
+
 
 module.exports = {
   restrict,
+  checkPayload,
+  checkUsernameExists,
+  checkUsernameFree
 }
