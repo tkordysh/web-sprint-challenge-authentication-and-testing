@@ -11,7 +11,7 @@ const restrict = (req, res, next) => {
     if (err) {
       next({ status: 401, message: "token invalid" });
     } else {
-      req.decoded = decoded
+      req.decoded = decoded;
       next();
     }
   });
@@ -30,7 +30,12 @@ const restrict = (req, res, next) => {
 };
 
 const checkPayload = (req, res, next) => {
-  next();
+  const { username, password } = req.body;
+  if (!username || !password) {
+    next({ status: 400, message: "username and password required" });
+  } else {
+    next();
+  }
 };
 
 async function checkUsernameFree(req, res, next) {

@@ -14,7 +14,6 @@ router.post(
   checkPayload,
   checkUsernameFree,
   async (req, res, next) => {
-    res.end("implement register, please!");
     /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -55,7 +54,6 @@ router.post(
   checkPayload,
   checkUsernameExists,
   async (req, res, next) => {
-    res.end("implement login, please!");
     /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
@@ -82,7 +80,7 @@ router.post(
     if (bcrypt.compareSync(req.body.password, req.user.password)) {
       const token = buildToken(req.user);
       res.json({
-        message: `${req.user.username} is back!`,
+        message: `welcome, ${req.user.username}`,
         token,
       });
     } else {
